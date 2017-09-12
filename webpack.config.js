@@ -9,9 +9,7 @@ const commonConfig = (RELEASE = false) => ({
   context: PATHS.src,
 
   entry: {
-    app: [
-      './app'
-    ]
+    app: ['./app']
   },
 
   output: {
@@ -19,23 +17,45 @@ const commonConfig = (RELEASE = false) => ({
     filename: '[name].bundle.js'
   },
 
+  resolve: {
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@views': path.resolve(PATHS.src, 'views'),
+      '@utils': path.resolve(PATHS.src, 'utils'),
+      '@styles': path.resolve(PATHS.src, 'styles')
+    },
+  },
+
   module: {
     rules: [
       {
-        test: /\.css/,
+        test: /\.scss|\.css/,
         use: [
-          'classnames-loader',
-          'isomorphic-style-loader', {
+          {
+            loader: 'isomorphic-style-loader'
+          }, {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
-              sourceMap: !RELEASE,
-              // CSS Modules https://github.com/css-modules/css-modules
               modules: true,
-              localIdentName: RELEASE ? '[hash:base64:3]' : '[name]_[local]_[hash:base64:3]'
+              sourceMap: !RELEASE,
+              camelCase: true,
+              localIdentName: RELEASE
+                ? '[hash:base64:3]'
+                : '[name]_[local]_[hash:base64:3]',
+              importLoaders: 2
             }
-          },
-          'postcss-loader'
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: !RELEASE
+            }
+          }, {
+            loader: 'postcss-loader'
+          }
         ]
       }, {
         test: /\.js|\.jsx$/,
@@ -53,13 +73,10 @@ const commonConfig = (RELEASE = false) => ({
     hot: !RELEASE,
     contentBase: PATHS.build,
     publicPath: '/',
-    port: 3000,
+    port: 3000
   },
 
   devtool: 'source-map'
 });
 
 module.exports = (env) => commonConfig(env.release);
-
-
-// module.exports = commonConfig;
