@@ -43,7 +43,7 @@ const commonConfig = (RELEASE = false) => ({
               modules: true,
               sourceMap: !RELEASE,
               camelCase: true,
-              localIdentName: RELEASE
+              localIdentName: RELEASE === true
                 ? '[hash:base64:3]'
                 : '[name]_[local]_[hash:base64:3]',
               importLoaders: 2
@@ -79,4 +79,4 @@ const commonConfig = (RELEASE = false) => ({
   devtool: 'source-map'
 });
 
-module.exports = (env) => commonConfig(env.release);
+module.exports = env => commonConfig(env.release);
