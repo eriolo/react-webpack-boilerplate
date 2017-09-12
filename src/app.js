@@ -6,8 +6,8 @@ import About from '@views/pages/About';
 import normalizeCss from 'normalize.css';
 import scaffoldingCss from '@styles/base/scaffolding.scss';
 
-normalizeCss._insertCss();
-scaffoldingCss._insertCss();
+normalizeCss._insertCss(); // eslint-disable-line no-underscore-dangle
+scaffoldingCss._insertCss(); // eslint-disable-line no-underscore-dangle
 
 render(
   <WithStylesContext onInsertCss={onInsertCss}>
