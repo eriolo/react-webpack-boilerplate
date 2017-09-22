@@ -73,7 +73,8 @@ const commonConfig = (RELEASE = false) => ({
     hot: !RELEASE,
     contentBase: PATHS.build,
     publicPath: '/',
-    port: 3000
+    port: 3000,
+    host: '0.0.0.0'
   },
 
   devtool: 'source-map'
