@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import ModalBase from '@views/components/ModalBase';
+import SideDrawerModal from '@views/components/SideDrawerModal';
 import s from './About.scss';
 
 class About extends Component {
@@ -20,7 +20,7 @@ class About extends Component {
     return (
       <main className={s.container}>
         <h1>About</h1>
-        <ModalBase
+        <SideDrawerModal
           isOpen={this.state.isModalOpen}
           onRequestClose={this.toggleModal}
         >
@@ -43,7 +43,7 @@ class About extends Component {
           totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.</p>
           <p>Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
           sed quia consequuntur.</p>
-        </ModalBase>
+        </SideDrawerModal>
         <button onClick={this.toggleModal}>Open modal</button>
       </main>
     );
