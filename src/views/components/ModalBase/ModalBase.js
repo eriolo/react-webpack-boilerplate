@@ -45,10 +45,10 @@ class ModalBase extends Component {
 
     if (isOpen) {
       this.scrollYBeforeModalOpen = window.scrollY;
-      // ModalBase.lockBody();
+      ModalBase.lockBody();
       this.setBodyTopPosition();
     } else {
-      // ModalBase.unlockBody();
+      ModalBase.unlockBody();
       this.resetBodyTopPosition();
       window.scroll(0, this.scrollYBeforeModalOpen);
     }
@@ -56,8 +56,7 @@ class ModalBase extends Component {
 
   setBodyTopPosition() {
     this.bodyTopValue = document.body.style.top;
-    console.log('this.bodyTopValue', this.bodyTopValue);
-    document.body.style.top = `-${this.contentScrollYPosBeforeModalOpen}px`;
+    document.body.style.top = `-${this.scrollYBeforeModalOpen}px`;
   }
 
   resetBodyTopPosition() {
