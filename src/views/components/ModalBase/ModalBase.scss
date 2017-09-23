@@ -1,47 +1,4 @@
-.content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: auto;
-  bottom: 0;
-  background-color: white;
-  padding: 2rem;
-  width: 32rem;
-  transition-duration: 300ms;
-  transition-timing-function: linear;
-  transform: translate3d(100%, 0, 0);
-}
-
-.content-after-open {
-  transform: translate3d(0, 0, 0);
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.content-before-close {
-  transform: translate3d(100%, 0, 0);
-}
-
-.overlay {
+.lock {
+  overflow: hidden;
   position: fixed;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10;
-  transition: opacity 300ms ease-out;
-}
-
-.overlay-after-open {
-  opacity: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.overlay-before-close {
-  opacity: 0;
 }
